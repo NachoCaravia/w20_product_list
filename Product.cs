@@ -13,6 +13,18 @@ public class Product
         Price = price;
     }
 
+    public string getCategory() 
+    {
+        return Category;
+    }
+    public string getName() 
+    {
+        return Name;
+    }
+    public double getPrice() 
+    {
+        return Price;
+    }
     public override string ToString()
     {
         return $"Product :Category={Category}, Name={Name}, Price={Price}";

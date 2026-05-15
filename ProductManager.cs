@@ -25,11 +25,32 @@ public class ProductManager
     // public Product SearchProduct(int id) {
     //     // return _products.FirstOrDefault(p => p.Id == id);
     // }
-    // public ShowProducts() {
-    //     // foreach (var product in _products) {
-    //     //     Console.WriteLine(product);
-    //     // }
-    // }
+    public void ShowProducts() {
+        int maxStringLength = 8;
+
+        foreach (var product in _products) {
+            int categoryLength = product.getCategory().Length;
+            int nameLength = product.getName().Length;
+            int longestLength = Math.Max(categoryLength, nameLength);
+            if (longestLength > maxStringLength) {
+                maxStringLength = longestLength;
+            }
+        }
+
+
+        Console.WriteLine("==== PRODUCT LIST ====");
+        Console.WriteLine($" {"Category".PadRight(maxStringLength)} | {"Name".PadRight(maxStringLength)} |Price");
+        for (int i = 0; i < maxStringLength*2 + 17; i++) 
+        {
+            Console.Write("-");
+        }
+        Console.Write("\n");
+        foreach (var product in _products) {
+            Console.WriteLine($" {product.getCategory().PadRight(maxStringLength)} | {product.getName().PadRight(maxStringLength)} | {product.getPrice(),10}");
+        }
+        Console.WriteLine();
+        Console.WriteLine("=====================");
+    }
     // ShowStatistics() {
     //     // var categoryGroups = _products.GroupBy(p => p.Category);
     //     // foreach (var group in categoryGroups) {

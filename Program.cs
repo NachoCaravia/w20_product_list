@@ -28,7 +28,7 @@ class Program
                     Program.AddProduct();
                     break;
                 case "2":
-                    // Program.ShowProducts();
+                    Program.ShowProducts();
                     break;
                 case "3":
                     // Program.SearchProduct();
@@ -70,7 +70,7 @@ class Program
                 if (i == 0)
                 {
                     Console.Write("Enter Product Category: ");
-                    string catInput = Console.ReadLine().Trim() ?? "";
+                    string catInput = (Console.ReadLine() ?? "").Trim();
                     adding = !catInput.ToLower().Equals("q");
                     Console.WriteLine($"adding is {adding}");
                     if (!adding) 
@@ -84,7 +84,7 @@ class Program
                 else if (i == 1) 
                 {
                     Console.Write("Enter Product Name: ");
-                    string nameInput = Console.ReadLine().Trim() ?? "";
+                    string nameInput = (Console.ReadLine() ?? "").Trim();;
                     adding = !nameInput.ToLower().Equals("q");
                     if (!adding) 
                     {
@@ -97,11 +97,11 @@ class Program
                 else
                 {
                     Console.Write("Enter Product Price: ");
-                    string priceInput = Console.ReadLine().Trim() ?? "";
+                    string priceInput = (Console.ReadLine() ?? "").Trim();
                     while (!double.TryParse(priceInput, out price) && !priceInput.ToLower().Equals("q")) 
                     {
                         Console.WriteLine("Invalid price. Please enter a valid double number: ");
-                        priceInput = Console.ReadLine().Trim() ?? "";
+                        priceInput = (Console.ReadLine() ?? "").Trim();
                     }
                     adding = !priceInput.ToLower().Equals("q");
                     if (!adding) 
@@ -119,6 +119,11 @@ class Program
               
             }
         }
+    }
+
+    static void ShowProducts() 
+    {
+        productManager.ShowProducts();
     }
 
         
