@@ -27,26 +27,23 @@ public class ProductManager
     // }
     public void ShowProducts() {
         int maxStringLength = 8;
-
-        foreach (var product in _products) {
-            int categoryLength = product.getCategory().Length;
-            int nameLength = product.getName().Length;
+        foreach (Product p in _products) {
+            int categoryLength = p.getCategory().Length;
+            int nameLength = p.getName().Length;
             int longestLength = Math.Max(categoryLength, nameLength);
             if (longestLength > maxStringLength) {
                 maxStringLength = longestLength;
             }
         }
-
-
         Console.WriteLine("==== PRODUCT LIST ====");
-        Console.WriteLine($" {"Category".PadRight(maxStringLength)} | {"Name".PadRight(maxStringLength)} |Price");
+        Console.WriteLine($"{"Id",10} | {"Category".PadRight(maxStringLength)} | {"Name".PadRight(maxStringLength)} | {"Price",10}");
         for (int i = 0; i < maxStringLength*2 + 17; i++) 
         {
             Console.Write("-");
         }
         Console.Write("\n");
-        foreach (var product in _products) {
-            Console.WriteLine($" {product.getCategory().PadRight(maxStringLength)} | {product.getName().PadRight(maxStringLength)} | {product.getPrice(),10}");
+        foreach (Product p in _products) {
+            Console.WriteLine($"{p.getId(),10} | {p.getCategory().PadRight(maxStringLength)} | {p.getName().PadRight(maxStringLength)} | {p.getPrice(),10}");
         }
         Console.WriteLine();
         Console.WriteLine("=====================");
