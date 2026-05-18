@@ -44,11 +44,16 @@ public class ProductManager
         Console.Write("\n");
 
         IEnumerable<Product> productsQuery = _products.OrderBy(n => n.getPrice());
+        double totalPrice = productsQuery.Sum(p => p.getPrice());
         foreach (Product p in productsQuery) {
             Console.WriteLine($"{p.getId(),10} | {p.getCategory().PadRight(maxStringLength)} | {p.getName().PadRight(maxStringLength)} | {p.getPrice(),10}");
         }
         Console.WriteLine();
-        Console.WriteLine("=====================");
+        Console.WriteLine("-----------------------------------");
+        Console.WriteLine($"TOTAL PRICE: {totalPrice} kr");
+        Console.WriteLine("-----------------------------------");
+        Console.WriteLine();
+        
     }
     // ShowStatistics() {
     //     // var categoryGroups = _products.GroupBy(p => p.Category);
