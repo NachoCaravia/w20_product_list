@@ -25,10 +25,10 @@ class Program
             switch (userInput)
             {
                 case "1":
-                    Program.AddProduct();
+                    productManager.AddProducts();
                     break;
                 case "2":
-                    Program.ShowProducts();
+                    productManager.ShowProducts();
                     break;
                 case "3":
                     // Program.SearchProduct();
@@ -53,79 +53,6 @@ class Program
             }
         }
     }
-
-    static void AddProduct()
-    {
-
-        Console.WriteLine("==== ADD PRODUCTS ====");
-        Console.WriteLine("Enter Product Details or press 'q' to return to main menu");
-        bool adding = true;
-        while (adding) 
-        {
-            string category = "";
-            string name = "";
-            double price = 0;
-            for (int i = 0; i < 3; i++) 
-            {
-                if (i == 0)
-                {
-                    Console.Write("Enter Product Category: ");
-                    string catInput = (Console.ReadLine() ?? "").Trim();
-                    adding = !catInput.ToLower().Equals("q");
-                    if (!adding) 
-                    {
-                        Console.WriteLine("==== BACK TO MAIN MENU ====");
-                        break ;
-                    }
-                    category = catInput;
-                    Console.WriteLine($"category: {category}");
-                } 
-                else if (i == 1) 
-                {
-                    Console.Write("Enter Product Name: ");
-                    string nameInput = (Console.ReadLine() ?? "").Trim();;
-                    adding = !nameInput.ToLower().Equals("q");
-                    if (!adding) 
-                    {
-                        Console.WriteLine("==== BACK TO MAIN MENU ====");
-                        break ;
-                    }
-                    name = nameInput;
-                    Console.WriteLine($"name: {name}");
-                }
-                else
-                {
-                    Console.Write("Enter Product Price: ");
-                    string priceInput = (Console.ReadLine() ?? "").Trim();
-                    while (!double.TryParse(priceInput, out price) && !priceInput.ToLower().Equals("q")) 
-                    {
-                        Console.WriteLine("Invalid price. Please enter a valid double number: ");
-                        priceInput = (Console.ReadLine() ?? "").Trim();
-                    }
-                    adding = !priceInput.ToLower().Equals("q");
-                    if (!adding) 
-                    {
-                        Console.WriteLine("==== BACK TO MAIN MENU ====");
-                        break ;
-                    }
-                    // price  = double.Parse(priceInput);
-                    productManager.AddProduct(category, name, price);
-                    Console.WriteLine("Product added successfully!");
-                    Console.WriteLine($"category: {category}, name: {name}, price: {price}");
-                    Console.WriteLine("====================================================");
-                    Console.WriteLine("Enter Product Details or press 'q' to return to main menu");
-                }
-              
-            }
-        }
-    }
-
-    static void ShowProducts() 
-    {
-        productManager.ShowProducts();
-    }
-
-        
 }
 
 
