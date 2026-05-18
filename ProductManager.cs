@@ -36,13 +36,15 @@ public class ProductManager
             }
         }
         Console.WriteLine("==== PRODUCT LIST ====");
-        Console.WriteLine($"{"Id",10} | {"Category".PadRight(maxStringLength)} | {"Name".PadRight(maxStringLength)} | {"Price",10}");
+        Console.WriteLine($"{"ID",10} | {"Category".PadRight(maxStringLength)} | {"Name".PadRight(maxStringLength)} | {"Price",10}");
         for (int i = 0; i < maxStringLength*2 + 17; i++) 
         {
             Console.Write("-");
         }
         Console.Write("\n");
-        foreach (Product p in _products) {
+
+        IEnumerable<Product> productsQuery = _products.OrderBy(n => n.getPrice());
+        foreach (Product p in productsQuery) {
             Console.WriteLine($"{p.getId(),10} | {p.getCategory().PadRight(maxStringLength)} | {p.getName().PadRight(maxStringLength)} | {p.getPrice(),10}");
         }
         Console.WriteLine();

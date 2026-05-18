@@ -72,7 +72,6 @@ class Program
                     Console.Write("Enter Product Category: ");
                     string catInput = (Console.ReadLine() ?? "").Trim();
                     adding = !catInput.ToLower().Equals("q");
-                    Console.WriteLine($"adding is {adding}");
                     if (!adding) 
                     {
                         Console.WriteLine("==== BACK TO MAIN MENU ====");

@@ -13,6 +13,11 @@ public class Product
         Price = price;
     }
 
+    public int getId() 
+    {
+        return Id;
+    }
+
     public string getCategory() 
     {
         return Category;
