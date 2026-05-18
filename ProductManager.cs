@@ -56,11 +56,22 @@ public class ProductManager
                 {
                     Console.Write("Enter Product Price: ");
                     string priceInput = (Console.ReadLine() ?? "").Trim();
-                    while (!double.TryParse(priceInput, out price) && !priceInput.ToLower().Equals("q")) 
+                    while (!double.TryParse(priceInput, out price) || 
+                        priceInput.ToLower().Equals("q") ||
+                        price < 0 ) 
                     {
-                        Console.WriteLine("Invalid price. Please enter a valid double number: ");
+                        Console.WriteLine("ERROR:");
+                        if (price < 0) 
+                        {
+                            Console.WriteLine("Price cannot be negative. Please enter a valid price: ");
+                        } else {
+                            Console.WriteLine("Invalid price format. Please enter a valid double number: ");
+                        }
+                        Console.WriteLine("");
                         priceInput = (Console.ReadLine() ?? "").Trim();
                     }
+                    Console.WriteLine($"price: {price}");
+                    Console.WriteLine($"Is price < 0? {price < 0}");  
                     adding = !priceInput.ToLower().Equals("q");
                     if (!adding) 
                     {
