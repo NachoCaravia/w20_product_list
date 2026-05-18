@@ -88,18 +88,6 @@ public class ProductManager
             }
         }
     }
-    // public int RemoveProduct(int id) {
-    //     // var productToRemove = _products.FirstOrDefault(p => p.Id == id);
-    //     // if (productToRemove != null) {
-    //     //     _products.Remove(productToRemove);
-    //     //     return id;
-    //     // }
-    //     // return -1; // Return -1 if product not found
-    // }
-
-    // public Product SearchProduct(int id) {
-    //     // return _products.FirstOrDefault(p => p.Id == id);
-    // }
 
     public double CalculateTotal() {
         return _products.Sum(p => p.getPrice());
@@ -109,22 +97,6 @@ public class ProductManager
         int maxStringLength = GetMaxStringLength();
         IEnumerable<Product> productsQuery = _products.OrderBy(n => n.getPrice());
         ShowTable("Product List", true, productsQuery, false);
-        // Console.WriteLine("==== PRODUCT LIST ====");
-        // Console.WriteLine($"{"ID",10} | {"Category".PadRight(maxStringLength)} | {"Name".PadRight(maxStringLength)} | {"Price",10}");
-        // for (int i = 0; i < maxStringLength*2 + 17; i++) 
-        // {
-        //     Console.Write("-");
-        // }
-        // Console.Write("\n");
-        // foreach (Product p in productsQuery) {
-        //     Console.WriteLine($"{p.getId(),10} | {p.getCategory().PadRight(maxStringLength)} | {p.getName().PadRight(maxStringLength)} | {p.getPrice(),10}");
-        // }
-        // Console.WriteLine();
-        // Console.WriteLine("-----------------------------------");
-        // Console.WriteLine($"TOTAL PRICE: {CalculateTotal()} kr");
-        // Console.WriteLine("-----------------------------------");
-        // Console.WriteLine();
-        
     }
 
     public void SearchProduct() {
@@ -154,12 +126,6 @@ public class ProductManager
             var categoryResults = _products.Where(p => p.getCategory().Equals(categorySearch));
             if (categoryResults.Any()) 
             {
-                // Console.WriteLine($"Products in category '{categorySearch}':");
-                // foreach (var product in categoryResults) 
-                // {
-                //     Console.WriteLine($"{"ID",10} | {"Category".PadRight(maxStringLength)} | {"Name".PadRight(maxStringLength)} | {"Price",10}");
-
-                // }
                 ShowTable($"Search Results for Category: {categorySearch}", 
                     false,
                     categoryResults,
@@ -168,8 +134,8 @@ public class ProductManager
                 Console.WriteLine($"No products found in category '{categorySearch}'.");
             }
         } 
-        else if (searchModeInput.Equals("2") || 
-            searchModeInput.Trim().ToLower().Equals("n")) 
+        // Search by name
+        else 
         {
             Console.Write("Enter product name to search: ");
             string nameSearch = Console.ReadLine() ?? "";
@@ -184,11 +150,6 @@ public class ProductManager
                 Console.WriteLine($"No products found with name '{nameSearch}'.");
             }
         }
-        else 
-        {
-
-        }
-       
 
     }
 
@@ -239,13 +200,4 @@ public class ProductManager
         }
         
     }
-    // ShowStatistics() {
-    //     // var categoryGroups = _products.GroupBy(p => p.Category);
-    //     // foreach (var group in categoryGroups) {
-    //     //     Console.WriteLine($"Category: {group.Key}, Count: {group.Count()}");
-    //     // }
-    // }
-
- 
-
 }
