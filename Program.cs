@@ -33,17 +33,17 @@ class Program
                     productManager.SearchProduct();
                     break;
                 case "4":
-                    // Program.EditProduct();
+                    productManager.EditProduct();
                     break;
                 case "5":
-                    // Program.DeleteProduct();
+                    productManager.DeleteProduct();
                     break;
                 case "6":
-                    // Program.ShowStatistics();
+                    productManager.ShowStatistics();
                     break;
                 case "9":
                     exit = true;
-                    // Console.WriteLine("Thank you for using this application");
+                    Console.WriteLine("Thank you for using this application");
                     break;
 
                 default:

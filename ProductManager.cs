@@ -1,4 +1,6 @@
 
+using System.ComponentModel.DataAnnotations;
+
 public class ProductManager 
 {
     private readonly List<Product> _products = new List<Product>();
@@ -198,6 +200,20 @@ public class ProductManager
             Console.WriteLine("-----------------------------------");
             Console.WriteLine();  
         }
-        
+    }
+
+    public void EditProduct()
+    {
+        Console.WriteLine("To be implemented...");
+    }
+
+    public void DeleteProduct()
+    {
+        Console.WriteLine("To be implemented...");
+    }
+
+    public void ShowStatistics()
+    {
+        Console.WriteLine("To be implemented...");
     }
 }
