@@ -13,7 +13,6 @@ class Program
             Console.WriteLine("Enter a Number");
             Console.WriteLine("1-Add a Product");
             Console.WriteLine("2-Show Products");
-            
             Console.WriteLine("3-Search Product");
             Console.WriteLine("4-Edit Product");
             Console.WriteLine("5-Delete Product");
@@ -31,7 +30,7 @@ class Program
                     productManager.ShowProducts();
                     break;
                 case "3":
-                    // Program.SearchProduct();
+                    productManager.SearchProduct();
                     break;
                 case "4":
                     // Program.EditProduct();
